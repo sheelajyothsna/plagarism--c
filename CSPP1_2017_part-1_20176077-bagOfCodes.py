@@ -51,6 +51,7 @@ class plagiarism():
     def intake(self):
         n=input('enter directory')
         z=os.listdir(n)
+        print(z)
         os.chdir(n)
         L1=[]
         for k in range(len(z)):
@@ -59,16 +60,22 @@ class plagiarism():
                      L1.append("0")
                 else:
                     t1=(c.dict(z[k]))
-                    print(t1)
+                    #print(t1)
                     t2=(c.dict(z[o]))
-                    print(t2)
-                    g1=c.dot_num(t1,t2)
-                    e1=c.eucild(t1)
-                    e2=c.eucild(t2)
-                    e=e1*e2
-                    L1.append(str(c.res(g1,e))+'%')
-            print(z[k])
-            print(L1)
+                    #print(t2)
+                    try:
+                        if len(t1)==0 or len(t2)==0:
+                            raise Exception
+                        else:
+                    
+                            g1=c.dot_num(t1,t2)
+                            e1=c.eucild(t1)
+                            e2=c.eucild(t2)
+                            e=e1*e2
+                            L1.append(str(c.res(g1,e))+'%')
+                    except Exception:
+                        L1.append("Empty")
+            print(z[k], L1)
             L1=[]
 c=plagiarism()
 c.intake()
