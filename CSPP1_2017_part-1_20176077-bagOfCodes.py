@@ -1,5 +1,6 @@
 import os                                                           
 import math
+import string
 class plagiarism():
     def __init__(self):
         self
@@ -10,6 +11,7 @@ class plagiarism():
         p=p.lower()
         p=p.replace("\n"," ").replace("\t"," ").replace("."," ").replace(","," ")
         p=p.split(" ")
+        p=[i.strip(string.punctuation)for i in p]
         
         for k in p:
                 if k not in d:                                   # counting no of values and storing in dictionary """
